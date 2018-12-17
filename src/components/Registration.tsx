@@ -49,7 +49,7 @@ export class Registration extends React.Component<Props, State> {
   }
 
   onAddressChange = (event: React.FormEvent<HTMLSelectElement>) => {
-    this.setState({ name: event.currentTarget.value })
+    this.setState({ address: event.currentTarget.value })
   }
 
   handleSubmit = (event: React.FormEvent<Form>) => {
