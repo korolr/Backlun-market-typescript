@@ -7,7 +7,7 @@ import storage from "redux-persist/lib/storage"
 
 const persistConfig = {
   key: "root",
-  blacklist: ["login", "registration", "basket"],
+  blacklist: ["registration"],
 
   debug: !(process.env.NODE_ENV === "production"),
   storage,
