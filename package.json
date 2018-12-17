@@ -1,0 +1,67 @@
+{
+  "name": "my-app2",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "history": "^4.7.2",
+    "react": "^16.4.1",
+    "react-bootstrap": "^0.32.3",
+    "react-dom": "^16.4.1",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "redux": "^4.0.0",
+    "redux-persist": "^5.10.0",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "precommit": "lint-staged",
+    "prettier:base": "prettier --parser typescript --single-quote",
+    "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
+    "prettier:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\""
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.15",
+    "@types/react": "^16.7.17",
+    "@types/react-bootstrap": "^0.32.15",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-redux": "^6.0.11",
+    "@types/react-router-dom": "^4.3.1",
+    "@types/redux": "^3.6.0",
+    "@types/redux-persist": "^4.3.1",
+    "@types/redux-thunk": "^2.1.0",
+    "@types/styled-components": "^4.1.4",
+    "node-fetch": "^1.5.3",
+    "typescript": "^3.2.2",
+    "websocket": "^1.0.23",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "husky": "^1.2.1",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.14.0",
+    "prop-types": "^15.6.2",
+    "dotenv": "^6.0.0",
+    "redux-devtools-extension": "^2.13.5"
+  },
+  "lint-staged": {
+    "*.{js, jsx}": [
+      "node_modules/.bin/eslint --max-warnings=0",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
