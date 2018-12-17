@@ -3,19 +3,25 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGIN_OUT,
+  loginAction
 } from "../actions/loginActions"
 
-const initialState = {
+export interface StoreStateLogin {
+  token: string | null
+  error: string
+  isLogin: boolean 
+}
+
+const initialState: StoreStateLogin  = {
   token: null,
   error: "",
   isLogin: false,
 }
 
-export function loginReducer(state = initialState, action) {
+export function loginReducer(state: StoreStateLogin = initialState, action: loginAction): StoreStateLogin {
   switch (action.type) {
     case LOGIN_REQUEST:
       return { ...state, token: null, error: "", isLogin: false }
-
     case LOGIN_SUCCESS:
       return {
         ...state,

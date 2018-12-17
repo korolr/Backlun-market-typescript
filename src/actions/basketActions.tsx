@@ -1,13 +1,40 @@
 import { HTTP } from "../utils/api"
-
+import { Action } from "redux"
+import { ThunkAction } from 'redux-thunk';
 import { logOut403 } from "./loginActions"
+import { rootState } from "../reducers"
+type MyExtraArg = undefined;
 
 export const BASKET_REQUEST = "BASKET_REQUEST"
+
+export interface BASKET_REQUEST extends Action {
+  type: typeof BASKET_REQUEST
+}
+
 export const BASKET_SUCCESS = "BASKET_SUCCESS"
+
+export interface BASKET_SUCCESS extends Action  {
+  type: typeof BASKET_SUCCESS
+  payload: Array<any>
+}
+
 export const BASKET_FAIL = "BASKET_FAIL"
+
+export interface BASKET_FAIL extends Action {
+  type: typeof BASKET_FAIL
+  payload: string
+}
+
 export const BASKET_CLEAR = "BASKET_CLEAR"
 
-export function getBasket() {
+export interface BASKET_CLEAR extends Action {
+  type: typeof BASKET_CLEAR
+  payload: Array<any>
+}
+
+export type basketAction = BASKET_REQUEST | BASKET_SUCCESS | BASKET_FAIL | BASKET_CLEAR;
+
+export function getBasket(): ThunkAction<void, rootState, MyExtraArg, basketAction>{
   return (dispatch, getState) => {
     const state = getState()
     dispatch({
@@ -20,8 +47,7 @@ export function getBasket() {
         params: {
           token: state.login.token,
         },
-      },
-      {}
+      }
     )
       .then(function(response) {
         if (response.data.body !== null) {
@@ -41,7 +67,7 @@ export function getBasket() {
   }
 }
 
-export function updateBasket(product, count) {
+export function updateBasket(product: string, count: number): ThunkAction<void, rootState, MyExtraArg, basketAction> {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({
@@ -68,7 +94,7 @@ export function updateBasket(product, count) {
                 token: state.login.token,
               },
             },
-            {}
+
           ).then(function(response) {
             if (response.data.body !== null) {
               dispatch({
@@ -89,7 +115,7 @@ export function updateBasket(product, count) {
   }
 }
 
-export function buyBasket() {
+export function buyBasket(): ThunkAction<void, rootState, MyExtraArg, basketAction> {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({
@@ -121,7 +147,7 @@ export function buyBasket() {
   }
 }
 
-export function clearBasket() {
+export function clearBasket(): BASKET_CLEAR  {
   return {
     type: BASKET_CLEAR,
     payload: [],

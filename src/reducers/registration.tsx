@@ -2,18 +2,26 @@ import {
   REGISTRATION_REQUEST,
   REGISTRATION_SUCCESS,
   REGISTRATION_FAIL,
+  registrationAction,
 } from "../actions/registrationActions"
 
-const initialState = {
+export interface StoreState {
+  success: boolean;
+  error: string;
+}
+
+const initialState: StoreState = {
   success: false,
   error: "",
 }
 
-export function registrationReducer(state = initialState, action) {
+export function registrationReducer(
+  state: StoreState = initialState,
+  action: registrationAction
+): StoreState {
   switch (action.type) {
     case REGISTRATION_REQUEST:
       return { ...state, error: "", success: false }
-
     case REGISTRATION_SUCCESS:
       return {
         ...state,
