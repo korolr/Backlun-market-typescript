@@ -1,32 +1,38 @@
 import { HTTP } from "../utils/api"
 import { Action } from "redux"
 import { ThunkAction } from "redux-thunk"
-import { Dispatch } from "react";
-
+import { Dispatch } from "react"
 
 export const REGISTRATION_REQUEST = "REGISTRATION_REQUEST"
 
-export interface REGISTRATION_REQUEST extends Action {
-  type: typeof REGISTRATION_REQUEST
+interface REGISTRATION_REQUEST extends Action {
+  type: typeof REGISTRATION_REQUEST;
 }
 
 export const REGISTRATION_SUCCESS = "REGISTRATION_SUCCESS"
 
-export interface REGISTRATION_SUCCESS extends Action {
-  type: typeof REGISTRATION_SUCCESS
+interface REGISTRATION_SUCCESS extends Action {
+  type: typeof REGISTRATION_SUCCESS;
 }
-
 
 export const REGISTRATION_FAIL = "REGISTRATION_FAIL"
 
-export interface REGISTRATION_FAIL extends Action {
-  type: typeof REGISTRATION_FAIL
-  payload: string
+interface REGISTRATION_FAIL extends Action {
+  type: typeof REGISTRATION_FAIL;
+  payload: string;
 }
 
-export type registrationAction = REGISTRATION_REQUEST | REGISTRATION_SUCCESS | REGISTRATION_FAIL
+export type registrationAction =
+  | REGISTRATION_REQUEST
+  | REGISTRATION_SUCCESS
+  | REGISTRATION_FAIL
 
-export function registrationStart(login: string, password: string, name: string, address: string): ThunkAction<void, null, void, registrationAction> {
+export function registrationStart(
+  login: string,
+  password: string,
+  name: string,
+  address: string
+): ThunkAction<void, null, void, registrationAction> {
   return dispatch => {
     dispatch({
       type: REGISTRATION_REQUEST,

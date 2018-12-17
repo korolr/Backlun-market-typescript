@@ -1,40 +1,40 @@
 import { HTTP } from "../utils/api"
 import { Action } from "redux"
 import { ThunkAction } from "redux-thunk"
-import { Dispatch } from "react";
-
+import { Dispatch } from "react"
 
 export const LOGIN_REQUEST = "LOGIN_REQUEST"
 
-export interface LOGIN_REQUEST extends Action {
-  type: typeof LOGIN_REQUEST
+interface LOGIN_REQUEST extends Action {
+  type: typeof LOGIN_REQUEST;
 }
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
 
-
-export interface LOGIN_SUCCESS extends Action {
-  type: typeof LOGIN_SUCCESS
-  payload: string
+interface LOGIN_SUCCESS extends Action {
+  type: typeof LOGIN_SUCCESS;
+  payload: string;
 }
 
 export const LOGIN_FAIL = "LOGIN_FAIL"
 
-export interface LOGIN_FAIL {
-  type: typeof LOGIN_FAIL
-  payload: string
+interface LOGIN_FAIL {
+  type: typeof LOGIN_FAIL;
+  payload: string;
 }
 
 export const LOGIN_OUT = "LOGIN_OUT"
 
-export interface LOGIN_OUT extends Action {
-  type: typeof LOGIN_OUT
+interface LOGIN_OUT extends Action {
+  type: typeof LOGIN_OUT;
 }
 
-export type loginAction = LOGIN_REQUEST | LOGIN_SUCCESS | LOGIN_FAIL | LOGIN_OUT;
+export type loginAction = LOGIN_REQUEST | LOGIN_SUCCESS | LOGIN_FAIL | LOGIN_OUT
 
-
-export function loginAction(login:string, password: string): ThunkAction<void, null, void, loginAction> {
+export function loginStart(
+  login: string,
+  password: string
+): ThunkAction<void, null, void, loginAction> {
   return dispatch => {
     dispatch({
       type: LOGIN_REQUEST,

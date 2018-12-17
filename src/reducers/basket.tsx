@@ -3,27 +3,30 @@ import {
   BASKET_SUCCESS,
   BASKET_FAIL,
   BASKET_CLEAR,
-  basketAction
+  basketAction,
 } from "../actions/basketActions"
 
 export interface StoreStateBasket {
-  data: Array<any>
+  data: Array<any>;
   error: string;
 }
 
-const initialState: StoreStateBasket  = {
+const initialState: StoreStateBasket = {
   data: [],
   error: "",
 }
 
-export function basketReducer(state: StoreStateBasket = initialState, action: basketAction): StoreStateBasket  {
+export function basketReducer(
+  state: StoreStateBasket = initialState,
+  action: basketAction
+): StoreStateBasket {
   switch (action.type) {
     case BASKET_REQUEST:
       return { ...state, error: "" }
     case BASKET_SUCCESS:
       return {
         ...state,
-        data: action.payload
+        data: action.payload,
       }
     case BASKET_FAIL:
       return { ...state, error: action.payload }

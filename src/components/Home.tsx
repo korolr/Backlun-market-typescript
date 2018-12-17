@@ -26,23 +26,22 @@ type Data = Array<{
 }>
 
 interface State {
-  data: Data
-  basket: Array<any>
+  data: Data;
+  basket: Array<any>;
 }
 
 interface Props {
-  login: boolean
+  login: boolean;
   basket: Array<{
     Product: {
-      ID: number
-    }
-  }>
-  updateBasket: (a: number, b: number) => void
-  getBasket: () => void
+      ID: number,
+    },
+  }>;
+  updateBasket: (a: number, b: number) => void;
+  getBasket: () => void;
 }
 
-
-export class Home extends React.Component<Props, State>  {
+export class Home extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = { data: [], basket: [] }

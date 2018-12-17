@@ -4,21 +4,25 @@ import { Registration } from "../components/Registration"
 import {
   registrationStart,
   registrationReq,
-  registrationAction
+  registrationAction,
 } from "../actions/registrationActions"
 
 import { ThunkDispatch } from "redux-thunk"
 
-import { rootState } from "../reducers";
+import { rootState } from "../reducers"
 
 interface Props {
-  toRegistration: (login: string, password: string, name: string, address: string) => void
-  error: string
-  success: boolean
-  login: boolean
-  toRegistrationReq: () => void
-  
-  }
+  toRegistration: (
+    login: string,
+    password: string,
+    name: string,
+    address: string
+  ) => void;
+  error: string;
+  success: boolean;
+  login: boolean;
+  toRegistrationReq: () => void;
+}
 
 class RegistrationContainer extends Component<Props> {
   render() {
@@ -55,8 +59,12 @@ const mapDispatchToProps = (
   dispatch: ThunkDispatch<null, void, registrationAction>
 ) => {
   return {
-    toRegistration: (login: string, password: string, name: string, address: string) =>
-      dispatch(registrationStart(login, password, name, address)),
+    toRegistration: (
+      login: string,
+      password: string,
+      name: string,
+      address: string
+    ) => dispatch(registrationStart(login, password, name, address)),
     toRegistrationReq: () => dispatch(registrationReq()),
   }
 }

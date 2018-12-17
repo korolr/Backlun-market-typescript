@@ -26,20 +26,20 @@ type Data = Array<{
 }>
 
 interface State {
-  data: Data
-  basket: Array<any>
+  data: Data;
+  basket: Array<any>;
 }
 
 interface Props {
-  id: number
-  login: boolean
+  id: number;
+  login: boolean;
   basket: Array<{
     Product: {
-      ID: number
+      ID: number,
     },
-  }>
-  updateBasket: (a: number, b: number) => void
-  getBasket: () => void
+  }>;
+  updateBasket: (a: number, b: number) => void;
+  getBasket: () => void;
 }
 
 export class Category extends React.Component<Props, State> {
@@ -101,7 +101,9 @@ export class Category extends React.Component<Props, State> {
                       )}
                     </Product>
                   )
-                } else { return null }
+                } else {
+                  return null
+                }
               })
             ) : (
               <div>Нет данных</div>

@@ -1,16 +1,16 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Login } from "../components/Login"
-import { loginAction, loginReq } from "../actions/loginActions"
+import { loginStart, loginReq, loginAction } from "../actions/loginActions"
 import { ThunkDispatch } from "redux-thunk"
 
-import { rootState } from "../reducers";
+import { rootState } from "../reducers"
 
 interface Props {
-  toLogin: (product: string, count: string) => void
-  login: boolean
-  toLoginReq: () => void
-  error: string
+  toLogin: (product: string, count: string) => void;
+  login: boolean;
+  toLoginReq: () => void;
+  error: string;
 }
 
 class LoginContainer extends Component<Props> {
@@ -40,7 +40,8 @@ const mapDispatchToProps = (
   dispatch: ThunkDispatch<null, void, loginAction>
 ) => {
   return {
-    toLogin: (email: string, password: string) => dispatch(loginAction(email, password)),
+    toLogin: (email: string, password: string) =>
+      dispatch(loginStart(email, password)),
     toLoginReq: () => dispatch(loginReq()),
   }
 }

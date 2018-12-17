@@ -4,23 +4,23 @@ import { Grid, Row, Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
 interface Data {
-  Name?: string,
-  Description?: string,
-  Count?: number,
-  ID: number,
+  Name?: string;
+  Description?: string;
+  Count?: number;
+  ID: number;
 }
 
 interface State {
-  data: Data
-  basket: Array<any>
+  data: Data;
+  basket: Array<any>;
 }
 
 interface Props {
-  id: number
-  login: boolean
-  getBasket: () => void
-  basket: Array<{Product: {ID: number}}>
-  updateBasket: (a: number, b: number) => void
+  id: number;
+  login: boolean;
+  getBasket: () => void;
+  basket: Array<{ Product: { ID: number } }>;
+  updateBasket: (a: number, b: number) => void;
 }
 
 export class Product extends React.Component<Props, State> {
@@ -38,11 +38,13 @@ export class Product extends React.Component<Props, State> {
       params: {
         id: this.props.id,
       },
-    }).then(function(response: {data: { body: Data } }) {
-      self.setState({ data: response.data.body })
-    }.bind(this))
+    }).then(
+      function(response: { data: { body: Data } }) {
+        self.setState({ data: response.data.body })
+      }.bind(this)
+    )
   }
-  
+
   componentWillReceiveProps(newProps: Props) {
     newProps.basket.map(item => {
       this.setState(prevState => ({

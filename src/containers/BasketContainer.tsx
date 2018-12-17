@@ -9,15 +9,14 @@ import {
 } from "../actions/basketActions"
 import { ThunkDispatch } from "redux-thunk"
 
-import { rootState } from "../reducers";
+import { rootState } from "../reducers"
 
 interface Props {
-  toUpdateBasket: (product: number, count: number) => void
-  toBuyBasket: () => void
-  toClearBasket: () => void
-  basket: any[]
+  toUpdateBasket: (product: number, count: number) => void;
+  toBuyBasket: () => void;
+  toClearBasket: () => void;
+  basket: any[];
 }
-
 
 class BasketContainer extends Component<Props> {
   render() {

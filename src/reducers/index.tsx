@@ -4,9 +4,9 @@ import { registrationReducer, StoreStateReg } from "./registration"
 import { basketReducer, StoreStateBasket } from "./basket"
 
 export interface rootState {
-  login: StoreStateLogin
-  registration: StoreStateReg
-  basket: StoreStateBasket
+  login: StoreStateLogin;
+  registration: StoreStateReg;
+  basket: StoreStateBasket;
 }
 export const rootReducer = combineReducers({
   login: loginReducer,

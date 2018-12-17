@@ -11,10 +11,10 @@ import {
 import history from "../history"
 
 interface State {
-  login: string,
-  password: string,
-  name: string,
-  address: string,
+  login: string;
+  password: string;
+  name: string;
+  address: string;
 }
 
 interface Props {
@@ -23,11 +23,11 @@ interface Props {
     password: string,
     name: string,
     adress: string
-  ) => void,
-  error: string
-  success: boolean
-  isLogin: boolean
-  regReq: () => void
+  ) => void;
+  error: string;
+  success: boolean;
+  isLogin: boolean;
+  regReq: () => void;
 }
 
 export class Registration extends React.Component<Props, State> {

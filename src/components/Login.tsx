@@ -11,15 +11,15 @@ import {
 import history from "../history"
 
 interface State {
-  login: string
-  password: string
+  login: string;
+  password: string;
 }
 
 interface Props {
-  login: (a: string, b: string) => void
-  isLogin: boolean
-  error: string
-  loginReq: () => void
+  login: (a: string, b: string) => void;
+  isLogin: boolean;
+  error: string;
+  loginReq: () => void;
 }
 
 export class Login extends React.Component<Props, State> {
@@ -36,7 +36,7 @@ export class Login extends React.Component<Props, State> {
     this.setState({ password: event.currentTarget.value })
   }
 
-  handleSubmit =  (event: React.FormEvent<Form>) => {
+  handleSubmit = (event: React.FormEvent<Form>) => {
     this.props.login(this.state.login, this.state.password)
     this.setState({ password: "" })
     event.preventDefault()
@@ -99,6 +99,5 @@ export class Login extends React.Component<Props, State> {
     )
   }
 }
-
 
 export default Login

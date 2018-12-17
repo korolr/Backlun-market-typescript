@@ -5,18 +5,18 @@ import { getBasket, updateBasket, basketAction } from "../actions/basketActions"
 
 import { ThunkDispatch } from "redux-thunk"
 
-import { rootState } from "../reducers";
+import { rootState } from "../reducers"
 
 interface Props {
-  toUpdateBasket: (product: number, count: number) => void
-  toGetBasket: () => void
-  login: boolean
-  basket: any[]
+  toUpdateBasket: (product: number, count: number) => void;
+  toGetBasket: () => void;
+  login: boolean;
+  basket: any[];
   match: {
     params: {
-      number: number
-    }
-  }
+      number: number,
+    },
+  };
 }
 
 class ProductContainer extends Component<Props> {
@@ -49,7 +49,8 @@ const mapDispatchToProps = (
 ) => {
   return {
     toGetBasket: () => dispatch(getBasket()),
-    toUpdateBasket: (product: number, count: number) => dispatch(updateBasket(product, count)),
+    toUpdateBasket: (product: number, count: number) =>
+      dispatch(updateBasket(product, count)),
   }
 }
 

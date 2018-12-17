@@ -1,53 +1,54 @@
 import { HTTP } from "../utils/api"
 import { Action } from "redux"
-import { ThunkAction } from 'redux-thunk';
+import { ThunkAction } from "redux-thunk"
 import { logOut403 } from "./loginActions"
 import { rootState } from "../reducers"
 
 export const BASKET_REQUEST = "BASKET_REQUEST"
 
-export interface BASKET_REQUEST extends Action {
-  type: typeof BASKET_REQUEST
+interface BASKET_REQUEST extends Action {
+  type: typeof BASKET_REQUEST;
 }
 
 export const BASKET_SUCCESS = "BASKET_SUCCESS"
 
-export interface BASKET_SUCCESS extends Action  {
-  type: typeof BASKET_SUCCESS
-  payload: Array<any>
+interface BASKET_SUCCESS extends Action {
+  type: typeof BASKET_SUCCESS;
+  payload: Array<any>;
 }
 
 export const BASKET_FAIL = "BASKET_FAIL"
 
-export interface BASKET_FAIL extends Action {
-  type: typeof BASKET_FAIL
-  payload: string
+interface BASKET_FAIL extends Action {
+  type: typeof BASKET_FAIL;
+  payload: string;
 }
 
 export const BASKET_CLEAR = "BASKET_CLEAR"
 
-export interface BASKET_CLEAR extends Action {
-  type: typeof BASKET_CLEAR
-  payload: Array<any>
+interface BASKET_CLEAR extends Action {
+  type: typeof BASKET_CLEAR;
+  payload: Array<any>;
 }
 
-export type basketAction = BASKET_REQUEST | BASKET_SUCCESS | BASKET_FAIL | BASKET_CLEAR;
+export type basketAction =
+  | BASKET_REQUEST
+  | BASKET_SUCCESS
+  | BASKET_FAIL
+  | BASKET_CLEAR
 
-export function getBasket(): ThunkAction<void, rootState, void, basketAction>{
+export function getBasket(): ThunkAction<void, rootState, void, basketAction> {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({
       type: BASKET_REQUEST,
     })
 
-    HTTP.get(
-      `api/get/backet`,
-      {
-        params: {
-          token: state.login.token,
-        },
-      }
-    )
+    HTTP.get(`api/get/backet`, {
+      params: {
+        token: state.login.token,
+      },
+    })
       .then(function(response) {
         if (response.data.body !== null) {
           dispatch({
@@ -66,7 +67,10 @@ export function getBasket(): ThunkAction<void, rootState, void, basketAction>{
   }
 }
 
-export function updateBasket(product: number, count: number): ThunkAction<void, rootState, void, basketAction> {
+export function updateBasket(
+  product: number,
+  count: number
+): ThunkAction<void, rootState, void, basketAction> {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({
@@ -86,15 +90,11 @@ export function updateBasket(product: number, count: number): ThunkAction<void, 
     )
       .then(function(response) {
         if (response.data.message === "Success") {
-          HTTP.get(
-            `api/get/backet`,
-            {
-              params: {
-                token: state.login.token,
-              },
+          HTTP.get(`api/get/backet`, {
+            params: {
+              token: state.login.token,
             },
-
-          ).then(function(response) {
+          }).then(function(response) {
             if (response.data.body !== null) {
               dispatch({
                 type: BASKET_SUCCESS,
@@ -146,7 +146,7 @@ export function buyBasket(): ThunkAction<void, rootState, void, basketAction> {
   }
 }
 
-export function clearBasket(): BASKET_CLEAR  {
+export function clearBasket(): BASKET_CLEAR {
   return {
     type: BASKET_CLEAR,
     payload: [],

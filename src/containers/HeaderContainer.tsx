@@ -6,25 +6,19 @@ import { getBasket, basketAction } from "../actions/basketActions"
 import { loginAction } from "../actions/loginActions"
 import { ThunkDispatch } from "redux-thunk"
 
-import {rootState } from "../reducers";
+import { rootState } from "../reducers"
 
 interface Props {
-  toLoginOut: () => void
-  login: boolean
-  basket: any[]
+  toLoginOut: () => void;
+  login: boolean;
+  basket: any[];
 }
 
 class HeadContainer extends Component<Props> {
   componentWillReceiveProps() {}
   render() {
     const { toLoginOut, login, basket } = this.props
-    return (
-      <Header
-        loginOut={toLoginOut}
-        isLogin={login}
-        basket={basket}
-      />
-    )
+    return <Header loginOut={toLoginOut} isLogin={login} basket={basket} />
   }
 }
 

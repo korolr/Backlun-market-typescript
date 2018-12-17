@@ -2,22 +2,22 @@ import * as React from "react"
 import { Grid, Row, Button } from "react-bootstrap"
 
 interface State {
-  price: number
+  price: number;
 }
 
 interface Props {
   basket: Array<{
     Product: {
-      ID: number
-      Price: number
-      Name: string
-      Description: string
+      ID: number,
+      Price: number,
+      Name: string,
+      Description: string,
     },
-    Count: number
-  }>,
-  updateBasket: (a: number, b: number) => void
-  buyBasket: Function
-  clearBasket: () => void
+    Count: number,
+  }>;
+  updateBasket: (a: number, b: number) => void;
+  buyBasket: Function;
+  clearBasket: () => void;
 }
 
 export class Basket extends React.Component<Props, State> {

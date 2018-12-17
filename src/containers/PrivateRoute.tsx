@@ -9,7 +9,6 @@ import { connect } from "react-redux"
 import { rootState } from "../reducers"
 
 interface PrivateRouteProps extends RouteProps {
-  // tslint:disable-next-line:no-any
   component: any;
   isAuth: boolean;
 }
