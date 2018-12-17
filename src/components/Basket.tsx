@@ -17,6 +17,7 @@ interface Props {
   }>,
   updateBasket: (a: number, b: number) => void
   buyBasket: Function
+  clearBasket: () => void
 }
 
 export class Basket extends React.Component<Props, State> {

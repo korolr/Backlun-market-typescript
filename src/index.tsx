@@ -8,8 +8,6 @@ import { PersistGate } from "redux-persist/integration/react"
 import { Router } from "react-router-dom"
 import history from "./history"
 
-import registerServiceWorker from "./registerServiceWorker"
-
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
@@ -22,4 +20,3 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById("root")
 )
-registerServiceWorker()

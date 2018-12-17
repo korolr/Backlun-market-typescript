@@ -31,7 +31,6 @@ interface State {
 }
 
 interface Props {
-  id: number,
   login: boolean
   basket: Array<{
     Product: {

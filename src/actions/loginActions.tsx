@@ -3,7 +3,6 @@ import { Action } from "redux"
 import { ThunkAction } from "redux-thunk"
 import { Dispatch } from "react";
 
-type MyExtraArg = undefined
 
 export const LOGIN_REQUEST = "LOGIN_REQUEST"
 
@@ -35,7 +34,7 @@ export interface LOGIN_OUT extends Action {
 export type loginAction = LOGIN_REQUEST | LOGIN_SUCCESS | LOGIN_FAIL | LOGIN_OUT;
 
 
-export function loginAction(login:string, password: string): ThunkAction<void, null, MyExtraArg, loginAction> {
+export function loginAction(login:string, password: string): ThunkAction<void, null, void, loginAction> {
   return dispatch => {
     dispatch({
       type: LOGIN_REQUEST,

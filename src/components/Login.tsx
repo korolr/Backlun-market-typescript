@@ -17,9 +17,8 @@ interface State {
 
 interface Props {
   login: (a: string, b: string) => void
-  getBasket: Function
   isLogin: boolean
-  error: boolean
+  error: string
   loginReq: () => void
 }
 

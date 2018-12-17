@@ -1,9 +1,25 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Basket } from "../components/Basket"
-import { updateBasket, buyBasket, clearBasket } from "../actions/basketActions"
+import {
+  updateBasket,
+  buyBasket,
+  clearBasket,
+  basketAction,
+} from "../actions/basketActions"
+import { ThunkDispatch } from "redux-thunk"
 
-class BasketContainer extends Component {
+import { rootState } from "../reducers";
+
+interface Props {
+  toUpdateBasket: (product: number, count: number) => void
+  toBuyBasket: () => void
+  toClearBasket: () => void
+  basket: any[]
+}
+
+
+class BasketContainer extends Component<Props> {
   render() {
     const { toUpdateBasket, toBuyBasket, basket, toClearBasket } = this.props
     return (
@@ -19,15 +35,18 @@ class BasketContainer extends Component {
   }
 }
 
-const mapStateToProps = store => {
+const mapStateToProps = (store: rootState) => {
   return {
     basket: store.basket.data,
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<rootState, void, basketAction>
+) => {
   return {
-    toUpdateBasket: (product, count) => dispatch(updateBasket(product, count)),
+    toUpdateBasket: (product: number, count: number) =>
+      dispatch(updateBasket(product, count)),
     toBuyBasket: () => dispatch(buyBasket()),
     toClearBasket: () => dispatch(clearBasket()),
   }

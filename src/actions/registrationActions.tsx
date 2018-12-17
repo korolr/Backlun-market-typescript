@@ -3,7 +3,6 @@ import { Action } from "redux"
 import { ThunkAction } from "redux-thunk"
 import { Dispatch } from "react";
 
-type MyExtraArg = undefined
 
 export const REGISTRATION_REQUEST = "REGISTRATION_REQUEST"
 
@@ -27,7 +26,7 @@ export interface REGISTRATION_FAIL extends Action {
 
 export type registrationAction = REGISTRATION_REQUEST | REGISTRATION_SUCCESS | REGISTRATION_FAIL
 
-export function registrationAction(login: string, password: string, name: string, address: string): ThunkAction<void, null, MyExtraArg, registrationAction> {
+export function registrationStart(login: string, password: string, name: string, address: string): ThunkAction<void, null, void, registrationAction> {
   return dispatch => {
     dispatch({
       type: REGISTRATION_REQUEST,

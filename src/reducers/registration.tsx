@@ -5,20 +5,20 @@ import {
   registrationAction,
 } from "../actions/registrationActions"
 
-export interface StoreState {
+export interface StoreStateReg {
   success: boolean;
   error: string;
 }
 
-const initialState: StoreState = {
+const initialState: StoreStateReg = {
   success: false,
   error: "",
 }
 
 export function registrationReducer(
-  state: StoreState = initialState,
+  state: StoreStateReg = initialState,
   action: registrationAction
-): StoreState {
+): StoreStateReg {
   switch (action.type) {
     case REGISTRATION_REQUEST:
       return { ...state, error: "", success: false }

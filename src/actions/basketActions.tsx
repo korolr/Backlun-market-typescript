@@ -3,7 +3,6 @@ import { Action } from "redux"
 import { ThunkAction } from 'redux-thunk';
 import { logOut403 } from "./loginActions"
 import { rootState } from "../reducers"
-type MyExtraArg = undefined;
 
 export const BASKET_REQUEST = "BASKET_REQUEST"
 
@@ -34,7 +33,7 @@ export interface BASKET_CLEAR extends Action {
 
 export type basketAction = BASKET_REQUEST | BASKET_SUCCESS | BASKET_FAIL | BASKET_CLEAR;
 
-export function getBasket(): ThunkAction<void, rootState, MyExtraArg, basketAction>{
+export function getBasket(): ThunkAction<void, rootState, void, basketAction>{
   return (dispatch, getState) => {
     const state = getState()
     dispatch({
@@ -67,7 +66,7 @@ export function getBasket(): ThunkAction<void, rootState, MyExtraArg, basketActi
   }
 }
 
-export function updateBasket(product: string, count: number): ThunkAction<void, rootState, MyExtraArg, basketAction> {
+export function updateBasket(product: number, count: number): ThunkAction<void, rootState, void, basketAction> {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({
@@ -115,7 +114,7 @@ export function updateBasket(product: string, count: number): ThunkAction<void, 
   }
 }
 
-export function buyBasket(): ThunkAction<void, rootState, MyExtraArg, basketAction> {
+export function buyBasket(): ThunkAction<void, rootState, void, basketAction> {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({
