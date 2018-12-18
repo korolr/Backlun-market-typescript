@@ -29,10 +29,11 @@ export class Header extends React.Component<Props, State> {
     this.state = { data: [] }
   }
   componentDidMount() {
-    let self = this
-    HTTP.get(`api/get/categories`).then(function(response) {
-      self.setState({ data: response.data.body })
-    })
+    HTTP.get(`api/get/categories`).then(
+      (response: { data: { body: Data } }) => {
+        this.setState({ data: response.data.body })
+      }
+    )
   }
   render() {
     const { loginOut, isLogin, basket } = this.props

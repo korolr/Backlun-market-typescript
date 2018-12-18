@@ -86,7 +86,10 @@ export function loginReq(): loginAction {
   }
 }
 
-export function logOut403(err: any, dispatch: Dispatch<loginAction>) {
+export function logOut403(
+  err: { response: { data: { message: string } } },
+  dispatch: Dispatch<loginAction>
+) {
   if (err.response.data.message === "Incorrect token") {
     return dispatch({
       type: LOGIN_OUT,
