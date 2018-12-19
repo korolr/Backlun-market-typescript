@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Header } from "../components/Header"
 import { logOut } from "../actions/loginActions"
-import { getBasket, basketAction } from "../actions/basketActions"
+import { fetchBasket, basketAction } from "../actions/basketActions"
 import { loginAction } from "../actions/loginActions"
 import { ThunkDispatch } from "redux-thunk"
 
@@ -34,7 +34,7 @@ const mapDispatchToProps = (
 ) => {
   return {
     toLoginOut: () => dispatch(logOut()),
-    toGetBasket: () => dispatch(getBasket()),
+    toGetBasket: () => dispatch(fetchBasket()),
   }
 }
 

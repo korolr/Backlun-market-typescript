@@ -13,6 +13,7 @@
     "react-scripts": "2.1.1",
     "redux": "^4.0.0",
     "redux-persist": "^5.10.0",
+    "redux-saga": "^0.16.2",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.1.2"
   },
@@ -38,6 +39,7 @@
     "@types/redux": "^3.6.0",
     "@types/redux-persist": "^4.3.1",
     "@types/redux-thunk": "^2.1.0",
+    "@types/redux-saga": "^0.10.5",
     "@types/styled-components": "^4.1.4",
     "node-fetch": "^1.5.3",
     "typescript": "^3.2.2",

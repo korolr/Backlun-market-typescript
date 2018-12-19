@@ -1,7 +1,11 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Product } from "../components/Product"
-import { getBasket, updateBasket, basketAction } from "../actions/basketActions"
+import {
+  fetchBasket,
+  updateBasket,
+  basketAction,
+} from "../actions/basketActions"
 
 import { ThunkDispatch } from "redux-thunk"
 
@@ -48,7 +52,7 @@ const mapDispatchToProps = (
   dispatch: ThunkDispatch<rootState, void, basketAction>
 ) => {
   return {
-    toGetBasket: () => dispatch(getBasket()),
+    toGetBasket: () => dispatch(fetchBasket()),
     toUpdateBasket: (product: number, count: number) =>
       dispatch(updateBasket(product, count)),
   }

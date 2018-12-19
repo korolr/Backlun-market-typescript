@@ -1,8 +1,4 @@
-import { HTTP } from "../utils/api"
 import { Action } from "redux"
-import { ThunkAction } from "redux-thunk"
-import { logOut403 } from "./loginActions"
-import { rootState } from "../reducers"
 
 export const BASKET_REQUEST = "BASKET_REQUEST"
 
@@ -14,7 +10,7 @@ export const BASKET_SUCCESS = "BASKET_SUCCESS"
 
 interface BASKET_SUCCESS extends Action {
   type: typeof BASKET_SUCCESS;
-  payload: Array<any>;
+  payload: any;
 }
 
 export const BASKET_FAIL = "BASKET_FAIL"
@@ -31,124 +27,68 @@ interface BASKET_CLEAR extends Action {
   payload: Array<any>;
 }
 
+export const BASKET_FETCHED = "BASKET_FETCHED"
+
+interface BASKET_FETCHED extends Action {
+  type: typeof BASKET_FETCHED;
+}
+
+export const BASKET_UPDATE = "BASKET_UPDATE"
+
+interface BASKET_UPDATE extends Action {
+  type: typeof BASKET_UPDATE;
+  payload: {
+    product: number,
+    count: number,
+  };
+}
+
+export const BASKET_BUY = "BASKET_BUY"
+
+interface BASKET_BUY extends Action {
+  type: typeof BASKET_BUY;
+}
+
 export type basketAction =
   | BASKET_REQUEST
   | BASKET_SUCCESS
   | BASKET_FAIL
   | BASKET_CLEAR
-
-export function getBasket(): ThunkAction<void, rootState, void, basketAction> {
-  return (dispatch, getState) => {
-    const state = getState()
-    dispatch({
-      type: BASKET_REQUEST,
-    })
-
-    HTTP.get(`api/get/backet`, {
-      params: {
-        token: state.login.token,
-      },
-    })
-      .then(function(response) {
-        if (response.data.body !== null) {
-          dispatch({
-            type: BASKET_SUCCESS,
-            payload: response.data.body,
-          })
-        }
-      })
-      .catch(function(err) {
-        logOut403(err, dispatch)
-        dispatch({
-          type: BASKET_FAIL,
-          payload: "Ошибка сервера",
-        })
-      })
-  }
-}
-
-export function updateBasket(
-  product: number,
-  count: number
-): ThunkAction<void, rootState, void, basketAction> {
-  return (dispatch, getState) => {
-    const state = getState()
-    dispatch({
-      type: BASKET_REQUEST,
-    })
-
-    HTTP.post(
-      `api/market/products`,
-      {},
-      {
-        params: {
-          token: state.login.token,
-          product: product,
-          count: count,
-        },
-      }
-    )
-      .then(function(response) {
-        if (response.data.message === "Success") {
-          HTTP.get(`api/get/backet`, {
-            params: {
-              token: state.login.token,
-            },
-          }).then(function(response) {
-            if (response.data.body !== null) {
-              dispatch({
-                type: BASKET_SUCCESS,
-                payload: response.data.body,
-              })
-            }
-          })
-        }
-      })
-      .catch(function(err) {
-        logOut403(err, dispatch)
-        dispatch({
-          type: BASKET_FAIL,
-          payload: "Ошибка сервера",
-        })
-      })
-  }
-}
-
-export function buyBasket(): ThunkAction<void, rootState, void, basketAction> {
-  return (dispatch, getState) => {
-    const state = getState()
-    dispatch({
-      type: BASKET_REQUEST,
-    })
-
-    HTTP.post(
-      `api/market/pay`,
-      {},
-      {
-        params: {
-          token: state.login.token,
-        },
-      }
-    )
-      .then(function(response) {
-        dispatch({
-          type: BASKET_SUCCESS,
-          payload: [],
-        })
-      })
-      .catch(function(err) {
-        logOut403(err, dispatch)
-        dispatch({
-          type: BASKET_FAIL,
-          payload: "Ошибка сервера",
-        })
-      })
-  }
-}
+  | BASKET_FETCHED
+  | BASKET_UPDATE
+  | BASKET_BUY
 
 export function clearBasket(): BASKET_CLEAR {
   return {
     type: BASKET_CLEAR,
     payload: [],
   }
+}
+
+export function requestBasket(): BASKET_REQUEST {
+  return { type: BASKET_REQUEST }
+}
+
+export function requestBasketSuccess(data: string): BASKET_SUCCESS {
+  return { type: BASKET_SUCCESS, payload: data }
+}
+
+export function requestBasketError(err: string): BASKET_FAIL {
+  return { type: BASKET_FAIL, payload: err }
+}
+
+export function fetchBasket(): BASKET_FETCHED {
+  return { type: BASKET_FETCHED }
+}
+
+export function updateBasket(product: number, count: number): BASKET_UPDATE {
+  const action = {
+    product: product,
+    count: count,
+  }
+  return { type: BASKET_UPDATE, payload: action }
+}
+
+export function buyBasket(): BASKET_BUY {
+  return { type: BASKET_BUY }
 }
