@@ -50,7 +50,7 @@ export class Header extends React.Component<Props, State> {
             <NavDropdown eventKey={3} title="Категории" id="basic-nav-dropdown">
               {this.state.data.map(item => {
                 return (
-                  <MenuItem eventKey={3}>
+                  <MenuItem eventKey={3} key={item.ID}>
                     {" "}
                     <Link to={`/cat/${item.ID}`} style={{ color: "#77778c" }}>
                       {item.Name}
