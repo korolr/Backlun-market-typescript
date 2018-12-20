@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/enzyme": "^3.1.15",
     "axios": "^0.18.0",
+    "enzyme": "^3.8.0",
     "history": "^4.7.2",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.3",
