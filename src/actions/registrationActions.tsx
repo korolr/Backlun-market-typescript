@@ -38,7 +38,7 @@ export function registrationStart(
       type: REGISTRATION_REQUEST,
     })
 
-    HTTP.post(
+    return HTTP.post(
       `/api/auth/registration`,
       {},
       {
