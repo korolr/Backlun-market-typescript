@@ -99,8 +99,13 @@ export function logOut403(
 
 export function logOutSaga403(err: {
   response: { data: { message: string } },
+  message?: string,
 }): any {
-  if (err.response.data.message === "Incorrect token") {
+  if (err.message === "Incorrect token") {
+    return {
+      type: LOGIN_OUT,
+    }
+  } else if (err.response.data.message === "Incorrect token") {
     return {
       type: LOGIN_OUT,
     }
