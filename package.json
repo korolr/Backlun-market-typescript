@@ -50,7 +50,7 @@
     "expect": "^23.6.0",
     "husky": "^1.2.1",
     "lint-staged": "^8.1.0",
-    "node-fetch": "^1.5.3",
+    "node-fetch": "^2.6.7",
     "prettier": "^1.14.0",
     "prop-types": "^15.6.2",
     "redux-devtools-extension": "^2.13.5",
